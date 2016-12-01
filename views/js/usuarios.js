@@ -1,5 +1,5 @@
- var service = "http://127.0.0.1:3000";
-
+ //var service = "http://127.0.0.1:3000";
+ var service = "https://arquisw-integrador.herokuapp.com";
 $(document).ready(function(){
 
     jQuery.support.cors = true;

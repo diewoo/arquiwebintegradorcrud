@@ -1,5 +1,5 @@
-var URL = "http://127.0.0.1:3000/";
-
+//var URL = "http://127.0.0.1:3000/";
+ var URL = "https://arquisw-integrador.herokuapp.com/";
 var id =localStorage.getItem("id");
 console.log(id);
 $(document).ready(function(){

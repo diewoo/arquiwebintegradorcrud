@@ -1,4 +1,5 @@
- var service = "http://127.0.0.1:3000";
+ //var service = "http://127.0.0.1:3000";
+ var service = "https://arquisw-integrador.herokuapp.com";
  $(document).ready(function(){
  	 jQuery.support.cors = true;
  	    var agregar=' <button id="agregar"  style="float: right ;"class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored"><i class="material-icons">loop</i></button>'

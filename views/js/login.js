@@ -3,8 +3,8 @@
 
 
 //$(document).ready(function(){
-    var URL = "http://127.0.0.1:3000/";
-
+    //var URL = "http://127.0.0.1:3000/";
+ var URL = "https://arquisw-integrador.herokuapp.com/";
 		$("#ingresar").click(function(){
 			var username= $("#username").val()
 	        var password= $("#password").val()
