@@ -48,23 +48,12 @@ $("#Agregar").click(function(){
         	swal('registro relaizado!').then(function go(){
         			window.location.href = "/agregarconsumo.html";
         	})
-                //localStorage.setItem("correo", correo);
+                
                   
             
         }
     });
-/*    var nombre = $("#nombre").val();
-    var username = $("#username").val();
-    var password = $("#password").val();
-    var nrosuministro = $("#nrosuministro").val();
-    var usuario =
-            {
-                "nombre": nombre,
-                "username":username,
-                "password":password,
-                "nrosuministro":nrosuministro,
-                
-            };*/
+
 
 
 

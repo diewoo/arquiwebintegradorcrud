@@ -46,15 +46,16 @@ exports.obtenerUsuario=function(req,res){
       });
 };
 //respuesta del login
-var rptalogin = function (user, mensaje, codigo,tipo) {
+var rptalogin = function (userid,user, mensaje, codigo,tipo,password) {
   return {
     status: {
       msg: mensaje,
       cod: codigo
     },
     user: {
+      userid:userid,
       username: user,
-      password:null,
+      password:password,
       tipo: tipo
     }
   }
@@ -100,6 +101,7 @@ var Cola = function (nrosuministro,fechamedicion,consumo) {
 exports.validLogin=function(req,res){
   var username=req.body.username;
   var password=req.body.password;
+
   
   
   var passEncriptada = encriptar(username,password)
@@ -114,18 +116,19 @@ exports.validLogin=function(req,res){
       if(user.password==passEncriptada){
         if(err) return res.status(500).send(err.message);
         var tipo=user.tipo; 
-        rpta=rptalogin(req.body.usuario,"Login exitoso",1,tipo)
+        var id=user._id;
+        rpta=rptalogin(id,req.body.username,"Login exitoso",1,tipo,password)
         res.status(200).jsonp(rpta);  
       }else{
         
         if(err) return res.status(500).send(err.message);
-        rpta=rptalogin(req.body.usuario,"Contraseña incorrecta",0,'I')
+        rpta=rptalogin(req.body.username,"Contraseña incorrecta",0,'I')
         res.status(200).jsonp(rpta);  
       }
       
     }else{
       
-      rpta=rptalogin(req.body.usuario,"No existe el usuario ",0,'ND')
+      rpta=rptalogin(req.body.username,"No existe el usuario ",0,'ND')
       res.status(200).jsonp(rpta);
   
       
@@ -235,7 +238,15 @@ exports.obtenerTodosLosConsumosdeUsuarios=function(req,res){
 exports.obtenerLosConsumosUsuario = function(req, res) { 
    
     Consumo.findById(req.params.id,function(err, consumo) {
-    var rpta2={};
+    
+    
+     
+   /* var rpta2={
+
+     "consumo":consumo
+
+    };*/
+
     
     if(err) res.send(500, err.message);
          console.log(req.body); 
@@ -261,14 +272,7 @@ exports.validarConsumo=function(req,res){
                       res.status(200).jsonp(rpta);
                       console.log(rpta);
 
-                      //agregar un consumo si el suministro existiera!                  
-                    /*Consumo.findOneAndUpdate({nrosuministro:req.body.nrosuministro},{ $push: {'consumos': {
-                        fechamedicion:req.body.fechamedicion,consumo:req.body.consumo,}}},
-                        {safe: true, upsert: true, new : true},
-                        function(err, consumo) {
-                            console.log(err);
-                              
-                     });*/
+              
                 
             } else {
                 

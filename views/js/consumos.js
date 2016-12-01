@@ -13,62 +13,79 @@
         cache: false,
         success: function (data) {
         	 var trHTML = '';
-        	 console.log(JSON.stringify(data))
-        	 $.each(data, function (i, item) {
+        	 console.log(data)
+        	 
         	 	 
         	 	//swal(JSON.stringify(item));
         	 	//console.log(item.datos.consumo);	
-
-        	 	 if(item.tipo===0){
+             // console.log(data.tipo);
         	 	 
-        	 	 		 trHTML += '<tr><td class="mdl-data-table__cell--non-numeric "style="text-align: center ;width:100%;" >' +  
-        	 	 	 item.nombre+
-        	 	 	 '</td>'+
+              for ( var contador in data){
+                //  if(data.tipo===0){
+                  if(data[contador].tipo===0){
+                     var codigo=data[contador]._id
 
-                  '<td class="mdl-data-table__cell--non-numeric "style="text-align: center ;width:100%;">' +
-                  item.nrosuministro+
-                  +'</td>'+
-                  '<td class="mdl-data-table__cell--non-numeric "style="text-align: center ;width:100%;">'+
-                  item.consumos.consumo+
-                  '</td>'+
-                  '<td class="mdl-data-table__cell--non-numeric "style="text-align: center ;width:100%;">'+
-                  item.consumos.fecha+'</td>'
+                           trHTML += '<tr><td class="mdl-data-table__cell--non-numeric "style="text-align: center ;width:100%;" >' +  
+               data[contador].nombre+
+               '</td>'+'<td>'+
+             
+                   '<a   data-id="id" id="'+codigo+'" style="text-align: center ; background-color:#DCEDC8" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect bot-consultar">' +
+                    "Ver consumo" +'</td>'
                    +'</tr>'; 
+              //}
+                  }
+          
+        	 	 
+        	 	 		
         	 
 	
         	 	 	
         	 	 	
         	 	 }
-        	 });
+        	 
         	 $('#location').append(trHTML);
          $('#botonsitoadd').append(agregar);
          		 
-         $("#agregar").click(function(){
+     $('.bot-consultar').click(function (evt ) {
+             localStorage.setItem("id", evt.target.id); 
+              window.location.href = "/consumousuario.html";
+         })
 
-         	 $.ajax({
-                type: 'GET',
-                url: '/usuario/desencolar',
-                success: function(data){
-                    $.each(data, function(index, object){
-                    	if(object.length===0){
-                    		    		swal('todo ok !').then(function go(){
-        			window.location.href = "/consumosusuarios.html";
-        	})	
- 		
+       $('#agregar').click(function(){
 
-                    	}else{
-                    		swal('todo ok! ').then(function go(){
-        			window.location.href = "/consumosusuarios.html";
-        	})	
+         $.ajax(
+    {
+        type: "GET",
+        url: service + '/usuario/desencolar/',
+        data: "{}",
+        contentType: "application/json; charset=utf-8",
+        //dataType: "json",
+        cache: false,
+        success: function (data) {
+          $.each(data, function(index, object){
+            swal('todo ok !').then(function go(){
+              window.location.href = "/consumosusuarios.html";
+          })  
+           
+          })
+           
+        }
+})
 
-                    		
-                    	}
-                        
-                    });
-                }
-            });
-        
-         });	
+       })
+
+
+
+
+
+
+
+
+
+
+
+
+
          	 },
         
         error: function (msg) {

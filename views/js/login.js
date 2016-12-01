@@ -40,8 +40,8 @@
             }else if (r.user.tipo === 0){
                  if (r.status.cod === 1) {
 
-                    //localStorage.setItem("username", username);
-                 
+                    localStorage.setItem("id", r.user.userid);
+                    
 
                  swal(r.status.msg).then(function go(){
                  window.location.href = "/usuario.html";   

@@ -2,8 +2,7 @@ var URL = "http://127.0.0.1:3000/";
 
 var id =localStorage.getItem("id");
 console.log(id);
-
- $(document).ready(function(){
+$(document).ready(function(){
  	 $.ajax(
     {
         type: "GET",
@@ -20,23 +19,21 @@ console.log(id);
             	console.log(data);
                 var rpta= JSON.stringify(data);
                      //console.log(id2)
-                for ( var i in data.consumos){
+                  
+                    	   for ( var i in data.consumos){
                 	trHTML += '<tr><td class="mdl-data-table__cell--non-numeric "style="text-align: center ;width:100%;" >' +  
                 data.consumos[i].consumo +
                  '</td>'+
                   '<td class="mdl-data-table__cell--non-numeric "style="text-align: center ;width:100%;">' 
 
             + data.consumos[i].fechamedicion + 
-            '</td>' + 
-            
-
-            '<td>'
-             + data.nrosuministro 
-             + '</td>'
+            '</td>' 
                     +'</tr>';    
            // })
             	
-                }     
+                  	
+                     }
+                 
                 
         
         

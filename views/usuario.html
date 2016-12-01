@@ -1,9 +1,66 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title></title>
-</head>
-<body>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+		<link href="css/styles.css" rel="stylesheet" type="text/css"/>
+		<link rel="stylesheet" href="bower_components/sweetalert2/dist/sweetalert2.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.2.1/material.min.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+	</head>
+	<body style="background-color: #c3c3c3">
+		<style type="text/css">
+			
+			.mdl-data-table {
+					table-layout:fixed;
+					width:100%;
+					}		
+			#my-table td, th {
+				  width: 100%;
+				  white-space: nowrap;
+				  overflow: hidden;
+				  text-overflow: ellipsis;
+				  -o-text-overflow: ellipsis;
+				  white-space: nowrap;
+				  table-layout: fixed;
+				 word-wrap: break-word;
+	
+				}
+			.mdl-data-table td {
+    text-align: center;
+}
 
-</body>
+
+		
+		</style>
+		<section class="mdl-grid" id="my-table">
+		<div class="container">
+			<table class="mdl-data-table mdl-js-data-table " id='location'>
+				<thead>
+					<tr>
+						<th   style="text-align: center ;background-color:#3f51b5;font-size: 20px;color: #ffffff " class="mdl-data-table__cell--non-numeric th">Consumo</th>
+						<th style="text-align: center ;background-color:#3f51b5;font-size: 20px;color: #ffffff " class="mdl-data-table__cell--non-numeric th ">Fecha</th>
+						
+						<th style="text-align: center ;background-color:#3f51b5;font-size: 20px;color: #ffffff " class="mdl-data-table__cell--non-numeric th ">Nro Suministro</th>
+					
+					</tr>
+				</thead>
+				
+			</table>
+
+		</div>
+		<div id="botonsitoadd"></div>
+		</section>
+		
+		<script src="bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="bower_components/es6-promise/es6-promise.auto.min.js"></script>
+		<script src="bower_components/sweetalert2/dist/sweetalert2.min.js"></script>
+		
+		<script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.2.1/material.min.js"></script>
+		<script  type="text/javascript" src="js/consumosusuario.js"></script>
+	</body>
 </html>
